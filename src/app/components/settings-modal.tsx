@@ -1,7 +1,7 @@
 import { Card } from './ui/card';
 import { Checkbox } from './ui/checkbox';
 import { Bell, Lock, Palette, Shield, Users, Zap, Plus, Trash2, Eye, EyeOff } from 'lucide-react';
-import logoImage from 'figma:asset/da66afec8308d820a80087d80cf52148e60777e5.png';
+// import logoImage from 'figma:asset/da66afec8308d820a80087d80cf52148e60777e5.png';
 import { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from './ui/dialog';
 import { Button } from './ui/button';
@@ -63,7 +63,7 @@ export function SettingsModal({ open, onClose }: SettingsModalProps) {
       <DialogContent className="max-w-7xl w-[1200px] max-h-[90vh] overflow-auto">
         <DialogHeader>
           <div className="flex items-center gap-3 mb-2">
-            <img src={logoImage} alt="Kyozo" className="h-8 w-auto" />
+            {/* <img src={logoImage} alt="Kyozo" className="h-8 w-auto" /> */}
           </div>
           <DialogTitle className="text-2xl">Settings</DialogTitle>
           <DialogDescription>

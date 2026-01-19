@@ -2,7 +2,7 @@ import { BarChart3, Grid3x3, Inbox, MessageSquare, Radio, Send, Settings, Ticket
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { Button } from './ui/button';
 import { Tooltip, TooltipTrigger, TooltipContent } from './ui/tooltip';
-import logoImage from 'figma:asset/da66afec8308d820a80087d80cf52148e60777e5.png';
+// import logoImage from 'figma:asset/da66afec8308d820a80087d80cf52148e60777e5.png';
 import { useState, useRef, useEffect } from 'react';
 
 interface SidebarProps {
@@ -140,7 +140,7 @@ export function Sidebar({ currentScreen, onNavigate, onOpenSettings }: SidebarPr
     <div className="w-[200px] bg-[#FDFCFA] h-screen flex flex-col border-r border-[#E8DFD0] shadow-sm">
       {/* Logo */}
       <div className="p-2 border-b border-[#E8DFD0]">
-        <img src={logoImage} alt="Kyozo" className="w-full h-auto" />
+        {/* <img src={logoImage} alt="Kyozo" className="w-full h-auto" /> */}
       </div>
 
       {/* Header - Community Switcher */}

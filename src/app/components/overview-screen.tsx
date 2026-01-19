@@ -8,8 +8,8 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { Label } from './ui/label';
 import { Checkbox } from './ui/checkbox';
 import { ChevronDown, Grid3x3, List, MessageSquare, Search, TrendingUp, Users, Plus, X, Send, Sparkles, Mail, Heart, Share2, UserPlus, Settings, Pencil, Trash2, Globe } from 'lucide-react';
-import heroBannerImage from 'figma:asset/cc1d3de65d85ac0541b24cdc811ccab6f308ab59.png';
-import logoImage from 'figma:asset/da66afec8308d820a80087d80cf52148e60777e5.png';
+// import heroBannerImage from 'figma:asset/cc1d3de65d85ac0541b24cdc811ccab6f308ab59.png';
+// import logoImage from 'figma:asset/da66afec8308d820a80087d80cf52148e60777e5.png';
 import { DisplaySettingsModal } from './display-settings-modal';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell, PieChart, Pie } from 'recharts';
 import { CulturalVesselGauge } from './cultural-vessel-gauge';
@@ -135,8 +135,8 @@ export function OverviewScreen({ initialDisplaySettingsOpen = false, initialInvi
   const [memberSearchQuery, setMemberSearchQuery] = useState('');
   const [aiQuery, setAiQuery] = useState('');
   const [displaySettingsOpen, setDisplaySettingsOpen] = useState(initialDisplaySettingsOpen);
-  const [currentLogoUrl, setCurrentLogoUrl] = useState(logoImage);
-  const [currentHeroUrl, setCurrentHeroUrl] = useState(heroBannerImage);
+  // const [currentLogoUrl, setCurrentLogoUrl] = useState(logoImage);
+  // const [currentHeroUrl, setCurrentHeroUrl] = useState(heroBannerImage);
   const [rightBrainExpanded, setRightBrainExpanded] = useState(false);
   const [leftBrainExpanded, setLeftBrainExpanded] = useState(false);
 
@@ -263,7 +263,7 @@ export function OverviewScreen({ initialDisplaySettingsOpen = false, initialInvi
       <div 
         className="relative px-8 py-8 overflow-hidden"
         style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${currentHeroUrl})`,
+          // backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${currentHeroUrl})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
@@ -272,7 +272,7 @@ export function OverviewScreen({ initialDisplaySettingsOpen = false, initialInvi
           {/* Left - Logo and Info */}
           <div className="flex items-center gap-4">
             <div className="w-20 h-20 rounded-full bg-white/10 backdrop-blur-sm border-2 border-white/30 flex items-center justify-center overflow-hidden">
-              <img src={currentLogoUrl} alt="Community Logo" className="w-14 h-14 object-contain" />
+              {/* <img src={currentLogoUrl} alt="Community Logo" className="w-14 h-14 object-contain" /> */}
             </div>
             <div>
               <h1 className="text-white text-3xl font-bold mb-2">Spin Sum</h1>
@@ -1081,10 +1081,10 @@ export function OverviewScreen({ initialDisplaySettingsOpen = false, initialInvi
       <DisplaySettingsModal
         open={displaySettingsOpen}
         onOpenChange={setDisplaySettingsOpen}
-        currentLogoUrl={currentLogoUrl}
-        currentHeroUrl={currentHeroUrl}
-        onLogoChange={setCurrentLogoUrl}
-        onHeroChange={setCurrentHeroUrl}
+        // currentLogoUrl={currentLogoUrl}
+        // currentHeroUrl={currentHeroUrl}
+        // onLogoChange={setCurrentLogoUrl}
+        // onHeroChange={setCurrentHeroUrl}
         openInviteCustomizer={initialInviteCustomizerOpen}
       />
     </div>
