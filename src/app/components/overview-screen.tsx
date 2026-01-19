@@ -263,7 +263,7 @@ export function OverviewScreen({ initialDisplaySettingsOpen = false, initialInvi
       <div 
         className="relative px-8 py-8 overflow-hidden"
         style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4))`,
+          // backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${currentHeroUrl})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
@@ -273,7 +273,6 @@ export function OverviewScreen({ initialDisplaySettingsOpen = false, initialInvi
           <div className="flex items-center gap-4">
             <div className="w-20 h-20 rounded-full bg-white/10 backdrop-blur-sm border-2 border-white/30 flex items-center justify-center overflow-hidden">
               {/* <img src={currentLogoUrl} alt="Community Logo" className="w-14 h-14 object-contain" /> */}
-              
             </div>
             <div>
               <h1 className="text-white text-3xl font-bold mb-2">Spin Sum</h1>
@@ -1082,10 +1081,10 @@ export function OverviewScreen({ initialDisplaySettingsOpen = false, initialInvi
       {/* <DisplaySettingsModal
         open={displaySettingsOpen}
         onOpenChange={setDisplaySettingsOpen}
-        currentLogoUrl={currentLogoUrl}
-        currentHeroUrl={currentHeroUrl}
-        onLogoChange={setCurrentLogoUrl}
-        onHeroChange={setCurrentHeroUrl}
+        // currentLogoUrl={currentLogoUrl}
+        // currentHeroUrl={currentHeroUrl}
+        // onLogoChange={setCurrentLogoUrl}
+        // onHeroChange={setCurrentHeroUrl}
         openInviteCustomizer={initialInviteCustomizerOpen}
       /> */}
     </div>

@@ -19,9 +19,12 @@ export function FeatureModal({ open, onClose }: FeatureModalProps) {
         <DialogHeader>
           <div className="flex items-center gap-3 mb-2">
             {/* <img src={logoImage} alt="Kyozo" className="h-8 w-auto" /> */}
+<<<<<<< HEAD
             <div className="w-full h-auto">
               <h1 className="text-2xl font-bold">Kyozo</h1>
             </div>
+=======
+>>>>>>> 823a93537f09b87d61236b4662d4b609b55f1c9c
           </div>
           <DialogTitle className="text-2xl">Create New Post</DialogTitle>
           <DialogDescription>

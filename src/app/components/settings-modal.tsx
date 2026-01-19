@@ -64,9 +64,6 @@ export function SettingsModal({ open, onClose }: SettingsModalProps) {
         <DialogHeader>
           <div className="flex items-center gap-3 mb-2">
             {/* <img src={logoImage} alt="Kyozo" className="h-8 w-auto" /> */}
-            <div className="w-full h-auto">
-              <h1 className="text-2xl font-bold">Kyozo</h1>
-            </div>
           </div>
           <DialogTitle className="text-2xl">Settings</DialogTitle>
           <DialogDescription>

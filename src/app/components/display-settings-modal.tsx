@@ -9,25 +9,25 @@ import { CommunityInviteCustomizer } from './community-invite-customizer';
 interface DisplaySettingsModalProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  currentLogoUrl: string;
-  currentHeroUrl: string;
-  onLogoChange?: (url: string) => void;
-  onHeroChange?: (url: string) => void;
+  // currentLogoUrl: string;
+  // currentHeroUrl: string;
+  // onLogoChange?: (url: string) => void;
+  // onHeroChange?: (url: string) => void;
   openInviteCustomizer?: boolean;
 }
 
 export function DisplaySettingsModal({ 
   open, 
   onOpenChange, 
-  currentLogoUrl, 
-  currentHeroUrl,
-  onLogoChange,
-  onHeroChange,
+  // currentLogoUrl, 
+  // currentHeroUrl,
+  // onLogoChange,
+  // onHeroChange,
   openInviteCustomizer = false
 }: DisplaySettingsModalProps) {
   const [inviteCustomizerOpen, setInviteCustomizerOpen] = useState(false);
-  const [previewLogoUrl, setPreviewLogoUrl] = useState(currentLogoUrl);
-  const [previewHeroUrl, setPreviewHeroUrl] = useState(currentHeroUrl);
+  // const [previewLogoUrl, setPreviewLogoUrl] = useState(currentLogoUrl);
+  // const [previewHeroUrl, setPreviewHeroUrl] = useState(currentHeroUrl);
 
   // Auto-open invite customizer when requested
   useEffect(() => {
@@ -37,8 +37,8 @@ export function DisplaySettingsModal({
   }, [open, openInviteCustomizer]);
 
   const handleSave = () => {
-    if (onLogoChange) onLogoChange(previewLogoUrl);
-    if (onHeroChange) onHeroChange(previewHeroUrl);
+    // if (onLogoChange) onLogoChange(previewLogoUrl);
+    // if (onHeroChange) onHeroChange(previewHeroUrl);
     onOpenChange(false);
   };
 
@@ -59,11 +59,11 @@ export function DisplaySettingsModal({
               <div className="flex items-start gap-4">
                 <div className="flex-shrink-0">
                   <div className="w-24 h-24 rounded-full bg-gray-100 border-2 border-gray-200 flex items-center justify-center overflow-hidden">
-                    <img 
+                    {/* <img 
                       src={previewLogoUrl} 
                       alt="Brand Logo Preview" 
                       className="w-20 h-20 object-contain"
-                    />
+                    /> */}
                   </div>
                 </div>
                 <div className="flex-1">
@@ -87,9 +87,9 @@ export function DisplaySettingsModal({
                           if (file) {
                             // In real app, upload to server and get URL
                             const reader = new FileReader();
-                            reader.onload = (e) => {
-                              setPreviewLogoUrl(e.target?.result as string);
-                            };
+                            // reader.onload = (e) => {
+                            //   setPreviewLogoUrl(e.target?.result as string);
+                            // };
                             reader.readAsDataURL(file);
                           }
                         };
@@ -103,7 +103,7 @@ export function DisplaySettingsModal({
                       variant="ghost"
                       size="sm"
                       className="text-gray-500 hover:text-gray-700"
-                      onClick={() => setPreviewLogoUrl(currentLogoUrl)}
+                      // onClick={() => setPreviewLogoUrl(currentLogoUrl)}
                     >
                       Reset to Default
                     </Button>
@@ -128,7 +128,7 @@ export function DisplaySettingsModal({
               <div 
                 className="relative w-full h-48 rounded-lg overflow-hidden mb-4"
                 style={{
-                  backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${previewHeroUrl})`,
+                  // backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${previewHeroUrl})`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                 }}
@@ -142,7 +142,7 @@ export function DisplaySettingsModal({
               </div>
 
               <div className="flex gap-3">
-                <Button
+                {/* <Button
                   variant="outline"
                   className="gap-2"
                   onClick={() => {
@@ -166,7 +166,7 @@ export function DisplaySettingsModal({
                 >
                   <Upload className="w-4 h-4" />
                   Upload New Image
-                </Button>
+                </Button> */}
                 <Button
                   variant="ghost"
                   size="sm"

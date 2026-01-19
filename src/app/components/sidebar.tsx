@@ -141,9 +141,6 @@ export function Sidebar({ currentScreen, onNavigate, onOpenSettings }: SidebarPr
       {/* Logo */}
       <div className="p-2 border-b border-[#E8DFD0]">
         {/* <img src={logoImage} alt="Kyozo" className="w-full h-auto" /> */}
-        <div className="w-full h-auto">
-          <h1 className="text-2xl font-bold">Kyozo</h1>
-        </div>
       </div>
 
       {/* Header - Community Switcher */}
