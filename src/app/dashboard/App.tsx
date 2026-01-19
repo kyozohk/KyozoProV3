@@ -1,19 +1,19 @@
 'use client';
 
 import { useState } from 'react';
-import { Sidebar } from './components/sidebar';
-import { OverviewScreen } from './components/overview-screen';
-import { MembersScreen } from './components/members-screen';
-import { InboxScreen } from './components/inbox-screen';
-import { FeedScreen } from './components/feed-screen';
-import { IntegrationsScreen } from './components/integrations-screen';
-import { BroadcastScreen } from './components/broadcast-screen';
-import { RSVPScreen } from './components/rsvp-screen';
-import { ScheduleScreen } from './components/schedule-screen';
-import { MoreFeaturesScreen } from './components/more-features-screen';
-import { SettingsModal } from './components/settings-modal';
-import { FeatureModal } from './components/feature-modal';
-import { Button } from './components/ui/button';
+import { Sidebar } from '../components/sidebar';
+import { OverviewScreen } from '../components/overview-screen';
+import { MembersScreen } from '../components/members-screen';
+import { InboxScreen } from '../components/inbox-screen';
+import { FeedScreen } from '../components/feed-screen';
+import { IntegrationsScreen } from '../components/integrations-screen';
+import { BroadcastScreen } from '../components/broadcast-screen';
+import { RSVPScreen } from '../components/rsvp-screen';
+import { ScheduleScreen } from '../components/schedule-screen';
+import { MoreFeaturesScreen } from '../components/more-features-screen';
+import { SettingsModal } from '../components/settings-modal';
+import { FeatureModal } from '../components/feature-modal';
+import { Button } from '../components/ui/button';
 import { Plus } from 'lucide-react';
 
 // Shared data types
