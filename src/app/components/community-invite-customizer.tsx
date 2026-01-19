@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from './ui/dialog';
 import { Button } from './ui/button';
 import { X } from 'lucide-react';
-import logoImage from 'figma:asset/da66afec8308d820a80087d80cf52148e60777e5.png';
+// import logoImage from 'figma:asset/da66afec8308d820a80087d80cf52148e60777e5.png';
 
 interface CommunityInviteCustomizerProps {
   open: boolean;

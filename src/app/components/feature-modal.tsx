@@ -1,7 +1,7 @@
 import { Textarea } from './ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 import { FileText, Image, Headphones, Video } from 'lucide-react';
-import logoImage from 'figma:asset/da66afec8308d820a80087d80cf52148e60777e5.png';
+// import logoImage from 'figma:asset/da66afec8308d820a80087d80cf52148e60777e5.png';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from './ui/dialog';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
@@ -18,7 +18,10 @@ export function FeatureModal({ open, onClose }: FeatureModalProps) {
       <DialogContent className="max-w-2xl">
         <DialogHeader>
           <div className="flex items-center gap-3 mb-2">
-            <img src={logoImage} alt="Kyozo" className="h-8 w-auto" />
+            {/* <img src={logoImage} alt="Kyozo" className="h-8 w-auto" /> */}
+            <div className="w-full h-auto">
+              <h1 className="text-2xl font-bold">Kyozo</h1>
+            </div>
           </div>
           <DialogTitle className="text-2xl">Create New Post</DialogTitle>
           <DialogDescription>
