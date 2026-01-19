@@ -28,11 +28,11 @@ const communityNavItems = [
     tooltip: 'Share content and updates with your community. Post text, audio, images, and video that your members can engage with.'
   },
   { 
-    href: (handle: string) => `/${handle}/members`, 
-    label: 'Members', 
+    href: (handle: string) => `/${handle}/audience`, 
+    label: 'Audience', 
     icon: Users,
     color: '#8BA888',
-    tooltip: 'Manage your community members, view their profiles, and organize contacts.'
+    tooltip: 'Manage your community audience, view their profiles, and organize contacts.'
   },
   { 
     href: (handle: string) => `/${handle}/broadcast`, 
