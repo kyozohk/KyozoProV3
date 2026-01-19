@@ -99,117 +99,119 @@ export default function MembersPage() {
 
   if (!community) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-background">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent" />
+      <div className="flex min-h-screen items-center justify-center bg-[#F5F1E8]">
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-[#D4A574] border-t-transparent" />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-background p-8">
-      <div className="mx-auto max-w-7xl">
-        {/* Header */}
-        <div className="mb-8 flex items-center justify-between">
-          <div>
-            <h1 className="text-3xl font-bold text-foreground">Members</h1>
-            <p className="mt-2 text-muted-foreground">
-              Manage {community.name} community members
-            </p>
+    <div className="flex-1 bg-[#F5F1E8] overflow-y-auto">
+      <div className="p-8">
+        <div className="mx-auto max-w-7xl">
+          {/* Header */}
+          <div className="mb-8 flex items-center justify-between">
+            <div>
+              <h1 className="text-3xl font-bold text-[#3A3630]">Members</h1>
+              <p className="mt-2 text-[#6B6358]">
+                Manage {community.name} community members
+              </p>
+            </div>
+            {(userRole === 'owner' || userRole === 'admin') && (
+              <button className="flex items-center gap-2 rounded-xl bg-[#4A5568] px-6 py-3 font-semibold text-white hover:bg-[#3A4558] transition-all shadow-sm hover:shadow-md">
+                <UserPlus className="h-5 w-5" />
+                Add Member
+              </button>
+            )}
           </div>
-          {(userRole === 'owner' || userRole === 'admin') && (
-            <button className="flex items-center gap-2 rounded-lg bg-primary px-6 py-3 font-medium text-primary-foreground hover:bg-primary/90 transition-colors">
-              <UserPlus className="h-5 w-5" />
-              Add Member
+
+          {/* Search and Filters */}
+          <div className="mb-6 flex gap-4">
+            <div className="relative flex-1">
+              <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-[#8B7355]" />
+              <input
+                type="text"
+                placeholder="Search members by name..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full rounded-xl border-2 border-[#E8DFD0] bg-white py-3 pl-10 pr-4 text-[#3A3630] outline-none focus:border-[#D4A574] focus:ring-2 focus:ring-[#D4A574]/20 transition-all"
+              />
+            </div>
+            <button className="flex items-center gap-2 rounded-xl border-2 border-[#E8DFD0] bg-white px-6 py-3 font-semibold text-[#3A3630] hover:bg-[#F5F1E8] transition-all">
+              <Filter className="h-5 w-5" />
+              Filters
             </button>
-          )}
-        </div>
+          </div>
 
-        {/* Search and Filters */}
-        <div className="mb-6 flex gap-4">
-          <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
-            <input
-              type="text"
-              placeholder="Search members by name..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full rounded-lg border border-border bg-card py-3 pl-10 pr-4 text-foreground outline-none focus:ring-2 focus:ring-ring"
-            />
-          </div>
-          <button className="flex items-center gap-2 rounded-lg border border-border bg-card px-6 py-3 font-medium text-foreground hover:bg-muted transition-colors">
-            <Filter className="h-5 w-5" />
-            Filters
-          </button>
-        </div>
-
-        {/* Members List */}
-        {loading ? (
-          <div className="flex items-center justify-center py-12">
-            <div className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent" />
-          </div>
-        ) : members.length === 0 ? (
-          <div className="flex flex-col items-center justify-center rounded-xl border-2 border-dashed border-border bg-card p-12 text-center">
-            <UserPlus className="mb-4 h-12 w-12 text-muted-foreground" />
-            <h3 className="mb-2 text-xl font-semibold text-foreground">No members found</h3>
-            <p className="text-muted-foreground">
-              {searchTerm ? 'Try adjusting your search' : 'Start by adding members to your community'}
-            </p>
-          </div>
-        ) : (
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {members.map((member) => (
-              <div
-                key={member.id}
-                className="rounded-xl border border-border bg-card p-6 transition-all hover:border-primary hover:shadow-lg"
-              >
-                <div className="mb-4 flex items-start justify-between">
-                  <div className="flex items-center gap-3">
+          {/* Members List */}
+          {loading ? (
+            <div className="flex items-center justify-center py-12">
+              <div className="h-8 w-8 animate-spin rounded-full border-4 border-[#D4A574] border-t-transparent" />
+            </div>
+          ) : members.length === 0 ? (
+            <div className="flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-[#D8CFC0] bg-white p-12 text-center shadow-sm">
+              <div className="mb-4 flex h-20 w-20 items-center justify-center rounded-2xl bg-[#E8DFD0]">
+                <UserPlus className="h-10 w-10 text-[#8B7355]" />
+              </div>
+              <h3 className="mb-2 text-xl font-semibold text-[#3A3630]">No members found</h3>
+              <p className="text-[#6B6358]">
+                {searchTerm ? 'Try adjusting your search' : 'Start by adding members to your community'}
+              </p>
+            </div>
+          ) : (
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {members.map((member) => (
+                <div
+                  key={member.id}
+                  className="rounded-2xl border-2 border-[#E8DFD0] bg-white p-6 transition-all hover:border-[#D4A574] hover:shadow-xl"
+                >
+                  <div className="mb-4 flex items-start gap-3">
                     {member.userDetails.avatarUrl ? (
                       <Image
                         src={member.userDetails.avatarUrl}
                         alt={member.userDetails.displayName}
                         width={48}
                         height={48}
-                        className="rounded-full object-cover"
+                        className="rounded-full object-cover ring-2 ring-[#E8DFD0]"
                       />
                     ) : (
-                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
-                        <span className="text-lg font-semibold text-primary">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#E8DFD0] ring-2 ring-[#D8CFC0]">
+                        <span className="text-lg font-semibold text-[#8B7355]">
                           {member.userDetails.displayName?.[0]?.toUpperCase() || 'U'}
                         </span>
                       </div>
                     )}
-                    <div>
-                      <h3 className="font-semibold text-foreground">
+                    <div className="flex-1 overflow-hidden">
+                      <h3 className="font-bold text-[#3A3630] truncate">
                         {member.userDetails.displayName}
                       </h3>
-                      <p className="text-sm text-muted-foreground">{member.userDetails.email}</p>
+                      <p className="text-sm text-[#8B7355] truncate">{member.userDetails.email}</p>
                     </div>
                   </div>
-                </div>
 
-                <div className="flex items-center gap-2">
-                  <span
-                    className={`rounded-full px-3 py-1 text-xs font-medium ${getRoleBadgeColor(
-                      member.role
-                    )}`}
-                  >
-                    {member.role}
-                  </span>
-                  {member.tags.length > 0 && (
-                    <span className="rounded-full bg-muted px-3 py-1 text-xs font-medium text-muted-foreground">
-                      +{member.tags.length} tags
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span
+                      className={`rounded-full px-3 py-1 text-xs font-semibold ${getRoleBadgeColor(
+                        member.role
+                      )}`}
+                    >
+                      {member.role}
                     </span>
-                  )}
-                </div>
+                    {member.tags.length > 0 && (
+                      <span className="rounded-full bg-[#F5F1E8] px-3 py-1 text-xs font-semibold text-[#8B7355]">
+                        +{member.tags.length} tags
+                      </span>
+                    )}
+                  </div>
 
-                <div className="mt-4 text-xs text-muted-foreground">
-                  Joined {new Date(member.joinedAt.toDate()).toLocaleDateString()}
+                  <div className="mt-4 text-xs text-[#8B7355]">
+                    Joined {new Date(member.joinedAt.toDate()).toLocaleDateString()}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        )}
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

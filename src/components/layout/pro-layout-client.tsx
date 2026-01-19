@@ -51,28 +51,28 @@ export function ProLayoutClient({ children }: ProLayoutClientProps) {
     : user?.email?.[0].toUpperCase() || 'U';
 
   return (
-    <div className="flex h-screen w-full overflow-hidden bg-background">
+    <div className="flex h-screen w-full overflow-hidden bg-[#F5F1E8]">
       {/* Main Sidebar */}
-      <aside className={`flex flex-col border-r border-border bg-card transition-all duration-300 ${sidebarOpen ? 'w-64' : 'w-20'}`}>
+      <aside className={`flex flex-col border-r border-[#E8DFD0] bg-[#FDFCFA] shadow-sm transition-all duration-300 ${sidebarOpen ? 'w-64' : 'w-20'}`}>
         {/* Header */}
-        <div className="flex h-20 items-center justify-center border-b border-border p-4">
+        <div className="flex h-20 items-center justify-center border-b border-[#E8DFD0] p-4">
           {sidebarOpen ? (
             <Link href="/communities" className="flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
-                <span className="text-lg font-bold text-primary-foreground">K</span>
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#D4A574]">
+                <span className="text-lg font-bold text-white">K</span>
               </div>
-              <span className="text-xl font-semibold text-foreground">Kyozo Pro</span>
+              <span className="text-xl font-semibold text-[#3A3630]">Kyozo Pro</span>
             </Link>
           ) : (
-            <button onClick={() => setSidebarOpen(true)} className="rounded-lg p-2 hover:bg-muted">
-              <Menu className="h-6 w-6" />
+            <button onClick={() => setSidebarOpen(true)} className="rounded-lg p-2 hover:bg-[#F5F1E8]">
+              <Menu className="h-6 w-6 text-[#6B6358]" />
             </button>
           )}
         </div>
 
         {/* Navigation */}
-        <nav className="flex-1 overflow-y-auto p-4">
-          <ul className="space-y-2">
+        <nav className="flex-1 overflow-y-auto px-3 py-4">
+          <ul className="space-y-1">
             {mainNavItems.map((item) => {
               const Icon = item.icon;
               const isActive = pathname.startsWith(item.href);
@@ -80,14 +80,14 @@ export function ProLayoutClient({ children }: ProLayoutClientProps) {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-colors ${
+                    className={`flex items-center gap-3 rounded-xl px-3 py-2.5 text-base transition-all ${
                       isActive
-                        ? 'bg-primary text-primary-foreground'
-                        : 'text-muted-foreground hover:bg-muted hover:text-foreground'
+                        ? 'bg-[#E8DFD0] text-[#3A3630] font-bold shadow-sm'
+                        : 'text-[#6B6358] hover:bg-[#F5F1E8] font-medium'
                     }`}
                   >
-                    <Icon className="h-5 w-5" />
-                    {sidebarOpen && <span className="font-medium">{item.label}</span>}
+                    <Icon className="h-5 w-5 flex-shrink-0" />
+                    {sidebarOpen && <span className="flex-1 text-left">{item.label}</span>}
                   </Link>
                 </li>
               );
@@ -96,9 +96,9 @@ export function ProLayoutClient({ children }: ProLayoutClientProps) {
         </nav>
 
         {/* Footer with User Info */}
-        <div className="border-t border-border p-4">
+        <div className="border-t border-[#E8DFD0] p-4">
           <div className={`flex items-center gap-3 ${sidebarOpen ? '' : 'justify-center'}`}>
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#D4A574] text-white shadow-md">
               {user?.photoURL ? (
                 <Image src={user.photoURL} alt="User" width={40} height={40} className="rounded-full" />
               ) : (
@@ -107,19 +107,19 @@ export function ProLayoutClient({ children }: ProLayoutClientProps) {
             </div>
             {sidebarOpen && (
               <div className="flex-1 overflow-hidden">
-                <p className="truncate text-sm font-medium text-foreground">
+                <p className="truncate text-sm font-medium text-[#3A3630]">
                   {user?.displayName || user?.email}
                 </p>
-                <p className="truncate text-xs text-muted-foreground">{user?.email}</p>
+                <p className="truncate text-xs text-[#8B7355]">{user?.email}</p>
               </div>
             )}
           </div>
           {sidebarOpen && (
             <button
               onClick={handleLogout}
-              className="mt-3 flex w-full items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-colors hover:bg-destructive/10 hover:text-destructive"
+              className="mt-3 flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-[#6B6358] transition-all hover:bg-[#F5F1E8]"
             >
-              <LogOut className="h-5 w-5" />
+              <LogOut className="h-4 w-4" />
               <span className="font-medium">Log Out</span>
             </button>
           )}

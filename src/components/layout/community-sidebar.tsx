@@ -14,14 +14,47 @@ import {
   Settings,
   ChevronDown,
   PlusCircle,
+  Send,
+  Info,
 } from 'lucide-react';
+import { Tooltip, TooltipTrigger, TooltipContent } from '@/app/components/ui/tooltip';
 
 const communityNavItems = [
-  { href: (handle: string) => `/${handle}/feed`, label: 'Feed', icon: Radio },
-  { href: (handle: string) => `/${handle}/members`, label: 'Members', icon: Users },
-  { href: (handle: string) => `/${handle}/broadcast`, label: 'Broadcast', icon: Radio },
-  { href: (handle: string) => `/${handle}/inbox`, label: 'Inbox', icon: Inbox },
-  { href: (handle: string) => `/${handle}/settings`, label: 'Settings', icon: Settings },
+  { 
+    href: (handle: string) => `/${handle}/feed`, 
+    label: 'Feed', 
+    icon: Radio,
+    color: '#9B6B9E',
+    tooltip: 'Share content and updates with your community. Post text, audio, images, and video that your members can engage with.'
+  },
+  { 
+    href: (handle: string) => `/${handle}/members`, 
+    label: 'Members', 
+    icon: Users,
+    color: '#8BA888',
+    tooltip: 'Manage your community members, view their profiles, and organize contacts.'
+  },
+  { 
+    href: (handle: string) => `/${handle}/broadcast`, 
+    label: 'Broadcast', 
+    icon: Send,
+    color: '#E87461',
+    tooltip: 'Send announcements and content to your community members via email, WhatsApp, or in-app messaging.'
+  },
+  { 
+    href: (handle: string) => `/${handle}/inbox`, 
+    label: 'Inbox', 
+    icon: Inbox,
+    color: '#6B9BB5',
+    tooltip: 'Communicate directly with your community members and manage conversations.'
+  },
+  { 
+    href: (handle: string) => `/${handle}/settings`, 
+    label: 'Settings', 
+    icon: Settings,
+    color: '#8B7355',
+    tooltip: 'Configure your community settings and preferences.'
+  },
 ];
 
 export function CommunitySidebar() {
@@ -85,9 +118,9 @@ export function CommunitySidebar() {
 
   if (loading) {
     return (
-      <aside className="w-64 border-r border-border bg-card">
+      <aside className="w-[200px] border-r border-[#E8DFD0] bg-[#FDFCFA] shadow-sm">
         <div className="flex h-full items-center justify-center">
-          <div className="h-6 w-6 animate-spin rounded-full border-2 border-primary border-t-transparent" />
+          <div className="h-6 w-6 animate-spin rounded-full border-2 border-[#D4A574] border-t-transparent" />
         </div>
       </aside>
     );
@@ -98,29 +131,29 @@ export function CommunitySidebar() {
   }
 
   return (
-    <aside className="relative w-64 border-r border-border bg-card">
+    <aside className="relative w-[200px] border-r border-[#E8DFD0] bg-[#FDFCFA] shadow-sm">
       {/* Community List View */}
       {showCommunityList ? (
         <div className="flex h-full flex-col">
           {/* Header with Create Button */}
-          <div className="flex h-20 items-center justify-between border-b border-border px-4">
-            <h2 className="text-lg font-semibold text-foreground">Communities</h2>
-            <button className="rounded-lg p-2 hover:bg-muted">
-              <PlusCircle className="h-5 w-5 text-primary" />
+          <div className="flex h-20 items-center justify-between border-b border-[#E8DFD0] px-4">
+            <h2 className="text-lg font-semibold text-[#3A3630]">Communities</h2>
+            <button className="rounded-lg p-2 hover:bg-[#F5F1E8] transition-colors">
+              <PlusCircle className="h-5 w-5 text-[#D4A574]" />
             </button>
           </div>
 
           {/* Communities List */}
           <div className="flex-1 overflow-y-auto p-4">
-            <div className="space-y-2">
+            <div className="space-y-1">
               {communities.map((community) => (
                 <button
                   key={community.communityId}
                   onClick={() => handleCommunitySelect(community.handle)}
-                  className={`flex w-full items-center gap-3 rounded-lg p-3 text-left transition-colors ${
+                  className={`flex w-full items-center gap-3 rounded-xl p-2.5 text-left transition-all ${
                     community.handle === selectedCommunityHandle
-                      ? 'bg-primary/10 text-primary'
-                      : 'hover:bg-muted'
+                      ? 'bg-[#E8DFD0] shadow-sm'
+                      : 'hover:bg-[#F5F1E8]'
                   }`}
                 >
                   {community.communityProfileImage ? (
@@ -129,16 +162,16 @@ export function CommunitySidebar() {
                       alt={community.name}
                       width={40}
                       height={40}
-                      className="rounded-lg object-cover"
+                      className="rounded-lg object-cover ring-2 ring-[#E8DFD0]"
                     />
                   ) : (
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
-                      <Users className="h-5 w-5 text-primary" />
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#E8DFD0]">
+                      <Users className="h-5 w-5 text-[#8B7355]" />
                     </div>
                   )}
                   <div className="flex-1 overflow-hidden">
-                    <p className="truncate font-medium text-foreground">{community.name}</p>
-                    <p className="truncate text-xs text-muted-foreground">
+                    <p className="truncate font-semibold text-sm text-[#3A3630]">{community.name}</p>
+                    <p className="truncate text-xs text-[#8B7355]">
                       {community.memberCount || 0} members
                     </p>
                   </div>
@@ -153,7 +186,7 @@ export function CommunitySidebar() {
           {/* Selected Community Header */}
           <button
             onClick={() => setShowCommunityList(true)}
-            className="flex h-20 items-center gap-3 border-b border-border px-4 hover:bg-muted transition-colors"
+            className="flex h-20 items-center gap-3 border-b border-[#E8DFD0] px-4 hover:bg-[#F5F1E8] transition-colors"
           >
             {selectedCommunity.communityProfileImage ? (
               <Image
@@ -161,25 +194,25 @@ export function CommunitySidebar() {
                 alt={selectedCommunity.name}
                 width={48}
                 height={48}
-                className="rounded-lg object-cover"
+                className="rounded-lg object-cover ring-2 ring-[#D4A574]/30"
               />
             ) : (
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                <Users className="h-6 w-6 text-primary" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-[#E8DFD0]">
+                <Users className="h-6 w-6 text-[#8B7355]" />
               </div>
             )}
             <div className="flex-1 overflow-hidden text-left">
-              <p className="truncate font-semibold text-foreground">{selectedCommunity.name}</p>
-              <p className="truncate text-sm text-muted-foreground">
+              <p className="truncate font-semibold text-[#3A3630]">{selectedCommunity.name}</p>
+              <p className="truncate text-sm text-[#8B7355]">
                 {selectedCommunity.memberCount || 0} members
               </p>
             </div>
-            <ChevronDown className="h-5 w-5 text-muted-foreground" />
+            <ChevronDown className="h-4 w-4 text-[#8B7355]" />
           </button>
 
           {/* Navigation Items */}
-          <nav className="flex-1 overflow-y-auto p-4">
-            <ul className="space-y-2">
+          <nav className="flex-1 overflow-y-auto px-3 py-4">
+            <ul className="space-y-1">
               {communityNavItems.map((item) => {
                 const Icon = item.icon;
                 const itemPath = item.href(selectedCommunity.handle);
@@ -188,14 +221,36 @@ export function CommunitySidebar() {
                   <li key={item.label}>
                     <Link
                       href={itemPath}
-                      className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-colors ${
+                      className={`flex items-center gap-3 rounded-xl px-3 py-2.5 text-base transition-all ${
                         isActive
-                          ? 'bg-primary text-primary-foreground'
-                          : 'text-muted-foreground hover:bg-muted hover:text-foreground'
+                          ? 'bg-[#E8DFD0] text-[#3A3630] font-bold shadow-sm'
+                          : 'text-[#6B6358] hover:bg-[#F5F1E8] font-medium'
                       }`}
                     >
-                      <Icon className="h-5 w-5" />
-                      <span className="font-medium">{item.label}</span>
+                      <Icon 
+                        className="w-5 h-5 flex-shrink-0"
+                        style={{ color: isActive ? item.color : undefined }}
+                      />
+                      <span className="flex-1 text-left">{item.label}</span>
+                      {item.tooltip && (
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <div
+                              className="flex-shrink-0"
+                              onClick={(e) => e.preventDefault()}
+                            >
+                              <Info className="w-3.5 h-3.5 text-[#8B7355] hover:text-[#D4A574] transition-colors" />
+                            </div>
+                          </TooltipTrigger>
+                          <TooltipContent 
+                            side="right" 
+                            sideOffset={8}
+                            className="max-w-[280px] bg-[#3A3630] text-[#F5F1E8] border-2 border-[#8B7355] shadow-xl"
+                          >
+                            <p className="text-xs leading-relaxed">{item.tooltip}</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      )}
                     </Link>
                   </li>
                 );

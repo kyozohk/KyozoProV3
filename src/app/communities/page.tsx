@@ -63,89 +63,101 @@ export default function CommunitiesPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background p-8">
-      <div className="mx-auto max-w-7xl">
-        <div className="mb-8 flex items-center justify-between">
-          <div>
-            <h1 className="text-3xl font-bold text-foreground">Your Communities</h1>
-            <p className="mt-2 text-muted-foreground">
-              Manage and access all your communities in one place
-            </p>
+    <div className="flex-1 bg-[#F5F1E8] overflow-y-auto">
+      <div className="p-8">
+        <div className="mx-auto max-w-7xl">
+          {/* Header Section */}
+          <div className="mb-8">
+            <div className="flex items-center justify-between mb-6">
+              <div>
+                <h1 className="text-3xl font-bold text-[#3A3630] mb-2">Your Communities</h1>
+                <p className="text-[#6B6358]">
+                  Manage and access all your communities in one place
+                </p>
+              </div>
+              <button className="flex items-center gap-2 rounded-xl bg-[#4A5568] px-6 py-3 font-semibold text-white hover:bg-[#3A4558] transition-all shadow-sm hover:shadow-md">
+                <Plus className="h-5 w-5" />
+                Create Community
+              </button>
+            </div>
           </div>
-          <button className="flex items-center gap-2 rounded-lg bg-primary px-6 py-3 font-medium text-primary-foreground hover:bg-primary/90 transition-colors">
-            <Plus className="h-5 w-5" />
-            Create Community
-          </button>
-        </div>
 
-        {communities.length === 0 ? (
-          <div className="flex flex-col items-center justify-center rounded-xl border-2 border-dashed border-border bg-card p-12 text-center">
-            <Users className="mb-4 h-12 w-12 text-muted-foreground" />
-            <h3 className="mb-2 text-xl font-semibold text-foreground">No communities yet</h3>
-            <p className="mb-6 text-muted-foreground">
-              Create your first community to start managing members and events
-            </p>
-            <button className="flex items-center gap-2 rounded-lg bg-primary px-6 py-3 font-medium text-primary-foreground hover:bg-primary/90 transition-colors">
-              <Plus className="h-5 w-5" />
-              Create Your First Community
-            </button>
-          </div>
-        ) : (
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {communities.map((community) => (
-              <button
-                key={community.communityId}
-                onClick={() => handleCommunityClick(community.handle)}
-                className="group relative overflow-hidden rounded-xl border border-border bg-card p-6 text-left transition-all hover:border-primary hover:shadow-lg"
-              >
-                <div className="mb-4 flex items-start justify-between">
-                  <div className="flex items-center gap-3">
+          {/* Communities Grid */}
+          {communities.length === 0 ? (
+            <div className="flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-[#D8CFC0] bg-white p-16 text-center shadow-sm">
+              <div className="mb-4 flex h-20 w-20 items-center justify-center rounded-2xl bg-[#E8DFD0]">
+                <Users className="h-10 w-10 text-[#8B7355]" />
+              </div>
+              <h3 className="mb-2 text-2xl font-bold text-[#3A3630]">No communities yet</h3>
+              <p className="mb-8 text-[#6B6358] max-w-md">
+                Create your first community to start managing members and events
+              </p>
+              <button className="flex items-center gap-2 rounded-xl bg-[#4A5568] px-8 py-3 font-semibold text-white hover:bg-[#3A4558] transition-all shadow-sm hover:shadow-md">
+                <Plus className="h-5 w-5" />
+                Create Your First Community
+              </button>
+            </div>
+          ) : (
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {communities.map((community) => (
+                <button
+                  key={community.communityId}
+                  onClick={() => handleCommunityClick(community.handle)}
+                  className="group relative overflow-hidden rounded-2xl border-2 border-[#E8DFD0] bg-white p-6 text-left transition-all hover:border-[#D4A574] hover:shadow-xl"
+                >
+                  {/* Owner Badge */}
+                  {community.ownerId === user?.uid && (
+                    <div className="absolute right-4 top-4">
+                      <span className="rounded-full bg-[#D4A574]/20 px-3 py-1 text-xs font-semibold text-[#8B7355]">
+                        Owner
+                      </span>
+                    </div>
+                  )}
+
+                  {/* Community Header */}
+                  <div className="mb-4 flex items-center gap-4">
                     {community.communityProfileImage ? (
-                      <Image
-                        src={community.communityProfileImage}
-                        alt={community.name}
-                        width={48}
-                        height={48}
-                        className="rounded-lg object-cover"
-                      />
+                      <div className="relative h-16 w-16 flex-shrink-0">
+                        <Image
+                          src={community.communityProfileImage}
+                          alt={community.name}
+                          width={64}
+                          height={64}
+                          className="rounded-xl object-cover ring-2 ring-[#E8DFD0]"
+                        />
+                      </div>
                     ) : (
-                      <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                        <Users className="h-6 w-6 text-primary" />
+                      <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-xl bg-[#E8DFD0] ring-2 ring-[#D8CFC0]">
+                        <Users className="h-8 w-8 text-[#8B7355]" />
                       </div>
                     )}
-                    <div>
-                      <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">
+                    <div className="flex-1 overflow-hidden">
+                      <h3 className="font-bold text-[#3A3630] group-hover:text-[#D4A574] transition-colors truncate">
                         {community.name}
                       </h3>
-                      <p className="text-sm text-muted-foreground">@{community.handle}</p>
+                      <p className="text-sm text-[#8B7355] truncate">@{community.handle}</p>
                     </div>
                   </div>
-                </div>
 
-                {community.description && (
-                  <p className="mb-4 line-clamp-2 text-sm text-muted-foreground">
-                    {community.description}
-                  </p>
-                )}
+                  {/* Description */}
+                  {community.description && (
+                    <p className="mb-4 line-clamp-2 text-sm text-[#6B6358] leading-relaxed">
+                      {community.description}
+                    </p>
+                  )}
 
-                <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                  <div className="flex items-center gap-1">
-                    <Users className="h-4 w-4" />
-                    <span>{community.memberCount || 0} members</span>
-                  </div>
-                </div>
-
-                {community.ownerId === user?.uid && (
-                  <div className="absolute right-4 top-4">
-                    <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
-                      Owner
+                  {/* Stats */}
+                  <div className="flex items-center gap-2 rounded-lg bg-[#F5F1E8] px-3 py-2">
+                    <Users className="h-4 w-4 text-[#8B7355]" />
+                    <span className="text-sm font-medium text-[#6B6358]">
+                      {community.memberCount || 0} {community.memberCount === 1 ? 'member' : 'members'}
                     </span>
                   </div>
-                )}
-              </button>
-            ))}
-          </div>
-        )}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
