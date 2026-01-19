@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { Sidebar } from './components/sidebar';
 import { OverviewScreen } from './components/overview-screen';
