@@ -1,0 +1,215 @@
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 16px;
+  
+  /* Earthy, sandy color palette inspired by archeology and museums */
+  --background: #F5F1E8;
+  --foreground: #3A3630;
+  --card: #FFFFFF;
+  --card-foreground: #3A3630;
+  --popover: #FFFFFF;
+  --popover-foreground: #3A3630;
+  
+  /* Primary dark slate/charcoal for contrast */
+  --primary: #4A5568;
+  --primary-foreground: #FFFFFF;
+  
+  /* Secondary warm sandy tones */
+  --secondary: #E8DFD0;
+  --secondary-foreground: #3A3630;
+  
+  /* Muted earthy tones */
+  --muted: #D8CFC0;
+  --muted-foreground: #6B6358;
+  
+  /* Accent warm beige */
+  --accent: #EBE3D5;
+  --accent-foreground: #3A3630;
+  
+  --destructive: #C44536;
+  --destructive-foreground: #FFFFFF;
+  
+  --border: rgba(58, 54, 48, 0.12);
+  --input: transparent;
+  --input-background: #F9F7F3;
+  --switch-background: #C8BFB3;
+  --font-weight-medium: 600;
+  --font-weight-normal: 400;
+  --ring: #A89B8C;
+  
+  /* Colorful accent colors for creativity */
+  --accent-coral: #E87461;
+  --accent-purple: #9B6B9E;
+  --accent-blue: #6B9BB5;
+  --accent-gold: #D4A574;
+  --accent-sage: #8BA888;
+  --accent-terracotta: #C97B63;
+  
+  /* Chart colors with earthy vibrancy */
+  --chart-1: #C97B63;
+  --chart-2: #6B9BB5;
+  --chart-3: #8BA888;
+  --chart-4: #D4A574;
+  --chart-5: #9B6B9E;
+  
+  --radius: 0.75rem;
+  --sidebar: #FDFCFA;
+  --sidebar-foreground: #3A3630;
+  --sidebar-primary: #4A5568;
+  --sidebar-primary-foreground: #FDFCFA;
+  --sidebar-accent: #F5F1E8;
+  --sidebar-accent-foreground: #3A3630;
+  --sidebar-border: rgba(58, 54, 48, 0.1);
+  --sidebar-ring: #A89B8C;
+}
+
+.dark {
+  --background: #2A2621;
+  --foreground: #F5F1E8;
+  --card: #332F2A;
+  --card-foreground: #F5F1E8;
+  --popover: #332F2A;
+  --popover-foreground: #F5F1E8;
+  --primary: #E8DFD0;
+  --primary-foreground: #2A2621;
+  --secondary: #4A453E;
+  --secondary-foreground: #F5F1E8;
+  --muted: #4A453E;
+  --muted-foreground: #A89B8C;
+  --accent: #4A453E;
+  --accent-foreground: #F5F1E8;
+  --destructive: #E87461;
+  --destructive-foreground: #FFFFFF;
+  --border: rgba(245, 241, 232, 0.12);
+  --input: rgba(245, 241, 232, 0.12);
+  --ring: #6B6358;
+  --font-weight-medium: 600;
+  --font-weight-normal: 400;
+  --chart-1: #E87461;
+  --chart-2: #8BBDD6;
+  --chart-3: #A8C9A5;
+  --chart-4: #E6C08D;
+  --chart-5: #B88CB8;
+  --sidebar: #1F1C18;
+  --sidebar-foreground: #F5F1E8;
+  --sidebar-primary: #E8DFD0;
+  --sidebar-primary-foreground: #2A2621;
+  --sidebar-accent: #332F2A;
+  --sidebar-accent-foreground: #F5F1E8;
+  --sidebar-border: rgba(245, 241, 232, 0.1);
+  --sidebar-ring: #6B6358;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  
+  /* Colorful accents */
+  --color-accent-coral: var(--accent-coral);
+  --color-accent-purple: var(--accent-purple);
+  --color-accent-blue: var(--accent-blue);
+  --color-accent-gold: var(--accent-gold);
+  --color-accent-sage: var(--accent-sage);
+  --color-accent-terracotta: var(--accent-terracotta);
+  
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /**
+  * Default typography styles for HTML elements (h1-h4, p, label, button, input).
+  * These are in @layer base, so Tailwind utility classes (like text-sm, text-lg) automatically override them.
+  */
+
+  html {
+    font-size: var(--font-size);
+  }
+
+  h1 {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.4;
+    letter-spacing: -0.02em;
+  }
+
+  h2 {
+    font-size: var(--text-xl);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+  }
+
+  h3 {
+    font-size: var(--text-lg);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  h4 {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  label {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  button {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  input {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-normal);
+    line-height: 1.5;
+  }
+}
